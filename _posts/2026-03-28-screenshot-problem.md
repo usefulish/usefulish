@@ -3,7 +3,7 @@ layout: post
 title: "The screenshot problem nobody talks about"
 date: 2026-03-28
 tags: [tools, macos, bash]
-description: "Every screenshot gets named Screenshot 2026-03-28 at 11.00.40.png. This is how I fixed it — and why the obvious solution didn't work."
+description: "Every screenshot gets named Screenshot 2026-03-28 at 11.00.40.png. That filename tells you exactly one useful thing. I tried fixing it with Shortcuts and Apple Intelligence. Then I threw out the whole stack and wrote a bash script. This is how I fixed it — and why the obvious solution didn't work."
 read_time: 8
 post_tools:
   - name: screenshot-renamer
