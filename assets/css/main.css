@@ -103,7 +103,7 @@ nav a:hover, nav a.active { color: var(--ink); }
 .post-title { font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.03em; margin-bottom: 12px; }
 .post-title a { color: var(--ink); text-decoration: none; }
 .post-title a:hover { color: var(--accent); }
-.post-excerpt { font-size: 13px; color: var(--ink-mid); line-height: 1.75; max-width: 58ch; margin-bottom: 16px; }
+.post-excerpt { font-size: 13px; color: var(--ink-mid); line-height: 1.75; max-width: 58ch; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
 .read-more { font-size: 11px; color: var(--accent); text-decoration: none; letter-spacing: 0.04em; }
 .read-more:hover { color: var(--ink); }
 

@@ -4,7 +4,3 @@
   tags: [bash, macos, cli]
   post: /writing/screenshot-problem/
 
-- name: prompt-library
-  url: https://github.com/usefulish/prompt-library
-  desc: Local-first library for AI-generated images and the prompts that made them.
-  tags: [node, chrome, wip]

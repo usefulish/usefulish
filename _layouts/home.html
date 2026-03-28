@@ -17,7 +17,7 @@ layout: default
           <h1 class="post-title">
             <a href="{{ featured.url | relative_url }}">{{ featured.title }}</a>
           </h1>
-          <p class="post-excerpt">{{ featured.description | default: featured.excerpt | strip_html | truncatewords: 60 }}</p>
+          <p class="post-excerpt">{{ featured.description | default: featured.excerpt | strip_html | truncatewords: 100 }}</p>
           <a class="read-more" href="{{ featured.url | relative_url }}">read more →</a>
         </article>
         {% endif %}
