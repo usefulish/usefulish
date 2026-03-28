@@ -1,0 +1,65 @@
+---
+layout: default
+---
+<div class="wrap">
+  <div class="layout">
+
+    <div class="span-2">
+      <div style="padding-top:32px;">
+        {% assign featured = site.posts.first %}
+        {% if featured %}
+        <div class="section-label">latest</div>
+        <article class="featured-post">
+          <div class="post-meta">
+            {{ featured.date | date: "%Y-%m-%d" }}
+            {% if featured.tags.size > 0 %}&nbsp;·&nbsp; {{ featured.tags | join: " &nbsp;·&nbsp; " }}{% endif %}
+          </div>
+          <h1 class="post-title">
+            <a href="{{ featured.url | relative_url }}">{{ featured.title }}</a>
+          </h1>
+          <p class="post-excerpt">{{ featured.description | default: featured.excerpt | strip_html | truncatewords: 60 }}</p>
+          <a class="read-more" href="{{ featured.url | relative_url }}">read more →</a>
+        </article>
+        {% endif %}
+
+        {% if site.posts.size > 1 %}
+        <hr class="divider">
+        <div class="section-label">previously</div>
+        {% for post in site.posts offset:1 %}
+        <div class="post-list-item">
+          <span class="post-list-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <a class="post-list-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-3" style="padding-top:32px;">
+      {% if site.data.tools %}
+      <div class="sidebar-section">
+        <div class="section-label">tools</div>
+        {% for tool in site.data.tools limit:2 %}
+        <div class="tool-card">
+          <a class="tool-name" href="{{ tool.url }}" target="_blank">{{ tool.name }}</a>
+          <p class="tool-desc">{{ tool.desc }}</p>
+          <div class="tool-tags">
+            {% for tag in tool.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="sidebar-section">
+        <div class="section-label">elsewhere</div>
+        {% for link in site.data.links %}
+        <a class="sidebar-link" href="{{ link.url }}" target="_blank">{{ link.label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>

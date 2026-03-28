@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<div class="wrap">
+  <div class="layout">
+
+    <div class="span-2" style="padding-top:32px;">
+      {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+      {% for year_group in posts_by_year %}
+      <div class="writing-year">{{ year_group.name }}</div>
+      {% for post in year_group.items %}
+      <div class="post-list-item">
+        <span class="post-list-date">{{ post.date | date: "%m-%d" }}</span>
+        <a class="post-list-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+
+    <div class="col-3" style="padding-top:32px;">
+      <div class="sidebar-section">
+        <div class="section-label">elsewhere</div>
+        {% for link in site.data.links %}
+        <a class="sidebar-link" href="{{ link.url }}" target="_blank">{{ link.label }}</a>
+        {% endfor %}
+      </div>
+
+      {% if site.data.tools %}
+      <div class="sidebar-section">
+        <div class="section-label">tools</div>
+        {% for tool in site.data.tools limit:2 %}
+        <div class="tool-card">
+          <a class="tool-name" href="{{ tool.url }}" target="_blank">{{ tool.name }}</a>
+          <p class="tool-desc">{{ tool.desc }}</p>
+          <div class="tool-tags">
+            {% for tag in tool.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>

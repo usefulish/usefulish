@@ -1,0 +1,70 @@
+---
+layout: default
+---
+<div class="wrap">
+  <div class="layout">
+
+    <div class="col-1" style="padding-top:32px;">
+      <div class="article-lede">
+        <div class="post-meta" style="margin-bottom:12px;">
+          {{ page.date | date: "%Y-%m-%d" }} &nbsp;·&nbsp; {{ page.read_time | default: 5 }} min read
+        </div>
+        <h1 class="article-title">{{ page.title }}</h1>
+        <p class="article-summary">{{ page.description | default: page.excerpt | strip_html }}</p>
+        <div class="article-byline">{{ page.tags | join: " &nbsp;·&nbsp; " }}</div>
+      </div>
+    </div>
+
+    <div class="col-2" style="padding-top:32px;">
+      <div class="article-body">
+        {{ content }}
+      </div>
+    </div>
+
+    <div class="col-3" style="padding-top:32px;">
+      <div class="sidebar-section" id="toc-section">
+        <div class="section-label">in this post</div>
+        <div class="toc" id="toc"></div>
+      </div>
+
+      {% if page.post_tools %}
+      <div class="sidebar-section">
+        <div class="section-label">tools in this post</div>
+        {% for tool in page.post_tools %}
+        <a class="sidebar-link" href="{{ tool.url }}" target="_blank">{{ tool.name }} ↗</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if page.post_links %}
+      <div class="sidebar-section">
+        <div class="section-label">links</div>
+        {% for link in page.post_links %}
+        <a class="sidebar-link" href="{{ link.url }}" target="_blank">{{ link.label }} ↗</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var toc = document.getElementById('toc');
+  var headings = document.querySelectorAll('.article-body h2');
+  headings.forEach(function (h) {
+    if (!h.id) {
+      h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    }
+    var a = document.createElement('a');
+    a.className = 'toc-item';
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    toc.appendChild(a);
+  });
+  if (toc.children.length === 0) {
+    document.getElementById('toc-section').style.display = 'none';
+  }
+});
+</script>

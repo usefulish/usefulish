@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>usefuli.sh — mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper:      #f2ede6;
+    --ink:        #1e1c18;
+    --ink-mid:    #5a5650;
+    --ink-faint:  #a09890;
+    --rule:       #c8c0b4;
+    --surface:    #ece7de;
+    --accent:     #7a5c3a;
+    --accent-lt:  #b8966a;
+    --tag-bg:     #e2dbd2;
+    --header-h:   52px;
+    --mono: 'IBM Plex Mono', monospace;
+
+    --term-bg:    #0e0e0e;
+    --term-text:  #d4d0c8;
+    --term-green: #a8cc8c;
+    --term-yellow:#dbab79;
+    --term-blue:  #71bef2;
+    --term-pink:  #e29eca;
+    --term-cyan:  #66c2cd;
+    --term-red:   #e88388;
+    --term-dim:   #555753;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:    #1a1815;
+      --ink:      #e8e2d8;
+      --ink-mid:  #9a9088;
+      --ink-faint:#5a5450;
+      --rule:     #2e2c28;
+      --surface:  #222018;
+      --accent:   #c8966a;
+      --accent-lt:#e8b888;
+      --tag-bg:   #2a2820;
+    }
+  }
+
+  html { scroll-padding-top: calc(var(--header-h) + 16px); }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Pinned header ── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    height: var(--header-h);
+  }
+
+  header .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+
+  .logo-slot { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-svg  { width: 28px; height: 28px; flex-shrink: 0; }
+  .wordmark  { font-size: 15px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .wordmark span { color: var(--accent); }
+
+  nav { display: flex; gap: 24px; }
+  nav a { font-size: 12px; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.04em; }
+  nav a:hover { color: var(--ink); }
+
+  /* ── 3-column grid ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 220px;
+    gap: 0;
+    padding: 40px 0 80px;
+    align-items: start;
+  }
+
+  .col-1 { border-right: 1px solid var(--rule); padding-right: 36px; }
+  .col-2 { padding: 0 36px; border-right: 1px solid var(--rule); }
+  .col-3 { padding-left: 28px; }
+  .span-2 { grid-column: 1 / 3; border-right: 1px solid var(--rule); padding-right: 36px; }
+
+  /* ── Section labels ── */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ── Index ── */
+  .featured-post { margin-bottom: 40px; }
+  .post-meta { font-size: 11px; color: var(--ink-faint); margin-bottom: 8px; letter-spacing: 0.03em; }
+  .post-title { font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .post-title a { color: var(--ink); text-decoration: none; }
+  .post-title a:hover { color: var(--accent); }
+  .post-excerpt { font-size: 13px; color: var(--ink-mid); line-height: 1.75; max-width: 58ch; margin-bottom: 16px; }
+  .read-more { font-size: 11px; color: var(--accent); text-decoration: none; letter-spacing: 0.04em; }
+  .read-more:hover { color: var(--ink); }
+
+  hr.divider { border: none; border-top: 1px solid var(--rule); margin: 36px 0; }
+
+  .post-list-item { display: grid; grid-template-columns: 86px 1fr; gap: 12px; align-items: baseline; margin-bottom: 18px; }
+  .post-list-date { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.02em; }
+  .post-list-title { font-size: 13px; font-weight: 500; color: var(--ink); text-decoration: none; line-height: 1.45; }
+  .post-list-title:hover { color: var(--accent); }
+
+  /* ── Article ── */
+  .article-lede {
+    padding-right: 36px;
+    border-right: 1px solid var(--rule);
+    position: sticky;
+    top: calc(var(--header-h) + 24px);
+  }
+
+  .article-title { font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.03em; margin-bottom: 16px; }
+  .article-summary { font-size: 12px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 20px; }
+  .article-byline { font-size: 11px; color: var(--ink-faint); padding-top: 16px; border-top: 1px solid var(--rule); }
+
+  .article-body { font-size: 13px; color: var(--ink-mid); line-height: 1.85; }
+  .article-body p { margin-bottom: 1.4em; }
+  .article-body h2 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 2.4em 0 0.8em;
+    padding-top: 1.4em;
+    border-top: 1px solid var(--rule);
+  }
+  .article-body p code {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--surface);
+    padding: 1px 5px;
+    color: var(--accent);
+  }
+
+  /* ── Terminal code block ── */
+  .code-block { background: var(--term-bg); margin: 1.6em 0; overflow-x: auto; }
+  .code-block .cb-bar { background: #161616; padding: 6px 14px; display: flex; align-items: center; border-bottom: 1px solid #222; }
+  .cb-label { font-size: 10px; color: #4a4a4a; letter-spacing: 0.08em; font-family: var(--mono); }
+  .cb-body { padding: 16px 18px; font-size: 12px; line-height: 1.7; font-family: var(--mono); color: var(--term-text); white-space: pre; overflow-x: auto; }
+
+  .t-comment { color: var(--term-dim); font-style: italic; }
+  .t-key     { color: var(--term-blue); }
+  .t-str     { color: var(--term-green); }
+  .t-var     { color: var(--term-yellow); }
+  .t-cmd     { color: var(--term-cyan); }
+  .t-flag    { color: var(--term-pink); }
+  .t-path    { color: var(--term-yellow); opacity: 0.85; }
+  .t-num     { color: var(--term-red); }
+
+  /* ── Sidebar ── */
+  .sidebar-section { margin-bottom: 32px; }
+  .tool-card { border: 1px solid var(--rule); padding: 13px 14px; margin-bottom: 8px; background: var(--surface); transition: border-color 0.12s; }
+  .tool-card:hover { border-color: var(--accent-lt); }
+  .tool-name { font-size: 12px; font-weight: 600; color: var(--ink); text-decoration: none; display: block; margin-bottom: 4px; }
+  .tool-name:hover { color: var(--accent); }
+  .tool-desc { font-size: 11px; color: var(--ink-mid); line-height: 1.5; margin-bottom: 8px; }
+  .tool-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag { font-size: 10px; background: var(--tag-bg); color: var(--ink-faint); padding: 2px 7px; letter-spacing: 0.04em; }
+
+  .sidebar-link { display: block; font-size: 11px; color: var(--ink-mid); text-decoration: none; padding: 5px 0; border-bottom: 1px solid var(--rule); letter-spacing: 0.02em; }
+  .sidebar-link:hover { color: var(--accent); }
+  .sidebar-link:last-child { border-bottom: none; }
+
+  .toc-item { display: block; font-size: 11px; color: var(--ink-faint); text-decoration: none; padding: 4px 0; border-bottom: 1px solid var(--rule); line-height: 1.4; }
+  .toc-item:hover { color: var(--accent); }
+  .toc-item:last-child { border-bottom: none; }
+
+  /* ── View toggle (mockup only) ── */
+  .vbtn { font-family: var(--mono); font-size: 11px; padding: 5px 14px; border: 1px solid var(--rule); background: transparent; color: var(--ink-mid); cursor: pointer; letter-spacing: 0.04em; transition: all 0.1s; }
+  .vbtn.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .vbtn:hover:not(.active) { border-color: var(--accent-lt); color: var(--ink); }
+
+  /* ── Footer ── */
+  footer { border-top: 1px solid var(--rule); padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
+  footer span { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.03em; }
+  .gh-link { font-size: 11px; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.04em; }
+  .gh-link:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap">
+      <a class="logo-slot" href="/">
+        <!--
+          LOGO SWAP ZONE
+          Replace the entire <svg id="site-logo"> with your designed mark.
+          Keep id="site-logo" so any JS targeting it still works.
+          The .wordmark text next to it is independent — keep or remove as needed.
+        -->
+        <svg class="logo-svg" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" id="site-logo">
+          <rect x="2" y="2" width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="4" y="12" font-family="'IBM Plex Mono',monospace" font-size="7" font-weight="600" fill="var(--accent)">u/</text>
+          <text x="4" y="22" font-family="'IBM Plex Mono',monospace" font-size="7" font-weight="400" fill="var(--ink-faint)">ish</text>
+        </svg>
+        <span class="wordmark">usefuli<span>.sh</span></span>
+      </a>
+      <nav>
+        <a href="/writing">writing</a>
+        <a href="/tools">tools</a>
+        <a href="https://github.com/usefulish" target="_blank">github</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <!-- MOCKUP TOGGLE — remove in production, use real routing instead -->
+    <div style="padding: 20px 0; display:flex; gap:8px; border-bottom: 1px solid var(--rule);">
+      <button class="vbtn active" onclick="showView('home',this)">index</button>
+      <button class="vbtn" onclick="showView('article',this)">article view</button>
+    </div>
+
+    <!-- ── INDEX PAGE ── -->
+    <div id="view-home">
+      <div class="layout">
+        <div class="span-2">
+          <div style="padding-top:32px;">
+            <div class="section-label">latest</div>
+            <article class="featured-post">
+              <div class="post-meta">2026-03-28 &nbsp;·&nbsp; tools &nbsp;·&nbsp; macos</div>
+              <h1 class="post-title">
+                <a href="/writing/screenshot-problem">The screenshot problem nobody talks about</a>
+              </h1>
+              <p class="post-excerpt">Every screenshot gets named Screenshot 2026-03-28 at 11.00.40.png. That filename tells you exactly one useful thing. I tried fixing it with Shortcuts and Apple Intelligence. Then I threw out the whole stack and wrote a bash script.</p>
+              <a class="read-more" href="/writing/screenshot-problem">read more →</a>
+            </article>
+
+            <hr class="divider">
+            <div class="section-label">previously</div>
+
+            <div class="post-list-item">
+              <span class="post-list-date">2026-03-14</span>
+              <a class="post-list-title" href="#">Building a local-first prompt library for AI-generated images</a>
+            </div>
+            <div class="post-list-item">
+              <span class="post-list-date">2026-02-28</span>
+              <a class="post-list-title" href="#">Hazelnut: switching from Hazel and why it was worth it</a>
+            </div>
+            <div class="post-list-item">
+              <span class="post-list-date">2026-02-11</span>
+              <a class="post-list-title" href="#">Pi-hole on Unraid with Tailscale as the nameserver</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3" style="padding-top:32px;">
+          <div class="sidebar-section">
+            <div class="section-label">tools</div>
+            <div class="tool-card">
+              <a class="tool-name" href="https://github.com/usefulish/screenshot-renamer" target="_blank">screenshot-renamer</a>
+              <p class="tool-desc">Renames screenshots to descriptive slugs using OCR + AI vision. Works with Hazelnut and Hazel.</p>
+              <div class="tool-tags">
+                <span class="tag">bash</span>
+                <span class="tag">macos</span>
+                <span class="tag">cli</span>
+              </div>
+            </div>
+            <div class="tool-card">
+              <a class="tool-name" href="https://github.com/usefulish/prompt-library" target="_blank">prompt-library</a>
+              <p class="tool-desc">Local-first library for AI-generated images and the prompts that made them.</p>
+              <div class="tool-tags">
+                <span class="tag">node</span>
+                <span class="tag">chrome</span>
+                <span class="tag">wip</span>
+              </div>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <div class="section-label">elsewhere</div>
+            <a class="sidebar-link" href="https://github.com/usefulish" target="_blank">github.com/usefulish</a>
+            <a class="sidebar-link" href="https://piermadonia.net" target="_blank">piermadonia.net</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ARTICLE PAGE ── -->
+    <div id="view-article" style="display:none;">
+      <div class="layout">
+
+        <div class="col-1" style="padding-top:32px;">
+          <div class="article-lede">
+            <div class="post-meta" style="margin-bottom:12px;">2026-03-28 &nbsp;·&nbsp; 8 min read</div>
+            <h1 class="article-title">The screenshot problem nobody talks about</h1>
+            <p class="article-summary">Every screenshot gets named Screenshot 2026-03-28 at 11.00.40.png. This is how I fixed it — and why the obvious solution didn't work.</p>
+            <div class="article-byline">tools &nbsp;·&nbsp; macos &nbsp;·&nbsp; bash</div>
+          </div>
+        </div>
+
+        <div class="col-2" style="padding-top:32px;">
+          <div class="article-body">
+            <p>Every screenshot I take on a Mac gets named something like <code>Screenshot 2026-03-24 at 11.00.40.png</code>. That filename tells you exactly one useful thing — when it was taken. It tells you nothing about what's in it.</p>
+            <p>My Screenshots folder had thousands of them. Finding a specific screenshot meant either remembering roughly when you took it, or opening them one by one. Neither is a great answer.</p>
+
+            <h2>The obvious solution</h2>
+            <p>Shortcuts. Someone had already built a solid 118-action implementation. I tried it. It mostly worked for text screenshots. But even when it worked, it was slow — 5 to 10 seconds per file. My workflow is take screenshot, go to folder, share. The file was never ready when I got there.</p>
+
+            <h2>Throwing out the stack</h2>
+            <p>Why does renaming a file require a 118-action Shortcut, Apple Intelligence, and a chat app running in the background? It doesn't. It's a bash script.</p>
+
+            <div class="code-block">
+              <div class="cb-bar">
+                <span class="cb-label">screenshot-rename.sh</span>
+              </div>
+              <div class="cb-body"><span class="t-comment"># OCR via macOS Vision framework</span>
+<span class="t-var">ocrText</span>=$(<span class="t-cmd">osascript</span> <span class="t-flag">-e</span> <span class="t-str">"
+  use framework \"Vision\"
+  set request to current application's
+    VNRecognizeTextRequest's alloc()'s init()
+  return ocrResult
+"</span> 2>/dev/null)
+
+<span class="t-comment"># If text found, send to API for slug</span>
+<span class="t-key">if</span> [ <span class="t-flag">-n</span> <span class="t-str">"$ocrText"</span> ] && [ ${<span class="t-var">#ocrText</span>} <span class="t-flag">-gt</span> <span class="t-num">10</span> ]; <span class="t-key">then</span>
+  <span class="t-var">slug</span>=$(call_api <span class="t-flag">--text</span> <span class="t-str">"$ocrText"</span>)
+<span class="t-key">else</span>
+  <span class="t-comment"># Resize to 300px, send to vision API</span>
+  <span class="t-cmd">sips</span> <span class="t-flag">-Z</span> <span class="t-num">300</span> <span class="t-str">"$inputFile"</span> <span class="t-flag">--out</span> <span class="t-path">"$tmpImg"</span>
+  <span class="t-var">slug</span>=$(call_api <span class="t-flag">--image</span> <span class="t-str">"$tmpImg"</span>)
+<span class="t-key">fi</span>
+
+<span class="t-cmd">mv</span> <span class="t-str">"$inputFile"</span> <span class="t-path">"${datePrefix}-${slug}.png"</span></div>
+            </div>
+
+            <p>Hazelnut watches the Desktop. New screenshot appears, script runs, file renamed. Under a second for OCR, under two for vision. No Shortcuts, no Apple Intelligence queue, no chat app dependency.</p>
+          </div>
+        </div>
+
+        <div class="col-3" style="padding-top:32px;">
+          <div class="sidebar-section">
+            <div class="section-label">in this post</div>
+            <div class="toc">
+              <a class="toc-item" href="#obvious">The obvious solution</a>
+              <a class="toc-item" href="#bridge">Apple Intelligence as a bridge</a>
+              <a class="toc-item" href="#stack">Throwing out the stack</a>
+              <a class="toc-item" href="#how">How it works</a>
+              <a class="toc-item" href="#300px">The 300px finding</a>
+              <a class="toc-item" href="#providers">Provider notes</a>
+              <a class="toc-item" href="#repo">The repo</a>
+            </div>
+          </div>
+          <div class="sidebar-section">
+            <div class="section-label">tools in this post</div>
+            <a class="sidebar-link" href="https://github.com/usefulish/screenshot-renamer" target="_blank">screenshot-renamer ↗</a>
+            <a class="sidebar-link" href="https://github.com/usefulish" target="_blank">github.com/usefulish ↗</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wrap">
+    <footer>
+      <span>usefuli.sh &nbsp;·&nbsp; mit licensed</span>
+      <a class="gh-link" href="https://github.com/usefulish" target="_blank">source on github →</a>
+    </footer>
+  </div>
+
+  <!-- MOCKUP TOGGLE SCRIPT — remove in production -->
+  <script>
+  function showView(v, btn) {
+    document.getElementById('view-home').style.display = v === 'home' ? 'block' : 'none';
+    document.getElementById('view-article').style.display = v === 'article' ? 'block' : 'none';
+    document.querySelectorAll('.vbtn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  </script>
+
+</body>
+</html>

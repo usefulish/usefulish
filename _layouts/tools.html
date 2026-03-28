@@ -1,0 +1,57 @@
+---
+layout: default
+---
+<div class="wrap">
+  <div class="layout">
+
+    <div class="span-2" style="padding-top:32px;">
+      <div class="section-label">tools</div>
+      <div class="tools-grid">
+        {% for tool in site.data.tools %}
+        <div class="tool-card tool-card--full">
+          <a class="tool-name" href="{{ tool.url }}" target="_blank">{{ tool.name }}</a>
+          <p class="tool-desc">{{ tool.desc }}</p>
+          {% if tool.post %}
+          <a class="read-more" href="{{ tool.post | relative_url }}">read the writeup →</a>
+          {% endif %}
+          <div class="tool-tags" style="margin-top:8px;">
+            {% for tag in tool.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-3" style="padding-top:32px;">
+      <div class="sidebar-section">
+        <div class="section-label">elsewhere</div>
+        {% for link in site.data.links %}
+        <a class="sidebar-link" href="{{ link.url }}" target="_blank">{{ link.label }}</a>
+        {% endfor %}
+      </div>
+
+      {% assign all_tags = "" %}
+      {% for tool in site.data.tools %}
+        {% for tag in tool.tags %}
+          {% assign all_tags = all_tags | append: tag | append: "," %}
+        {% endfor %}
+      {% endfor %}
+      {% assign tag_list = all_tags | split: "," | uniq | sort %}
+      {% if tag_list.size > 0 %}
+      <div class="sidebar-section">
+        <div class="section-label">tags</div>
+        <div class="tool-tags" style="gap:6px;">
+          {% for tag in tag_list %}
+          {% unless tag == "" %}
+          <span class="tag">{{ tag }}</span>
+          {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>

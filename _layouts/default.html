@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title and page.title != site.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  {% seo %}
+  {% feed_meta %}
+</head>
+<body>
+
+  <header>
+    <div class="wrap">
+      <a class="logo-slot" href="{{ '/' | relative_url }}">
+        <svg class="logo-svg" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" id="site-logo">
+          <rect x="2" y="2" width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="4" y="12" font-family="'IBM Plex Mono',monospace" font-size="7" font-weight="600" fill="var(--accent)">u/</text>
+          <text x="4" y="22" font-family="'IBM Plex Mono',monospace" font-size="7" font-weight="400" fill="var(--ink-faint)">ish</text>
+        </svg>
+        <span class="wordmark">usefuli<span>.sh</span></span>
+      </a>
+      <nav>
+        <a href="{{ '/writing/' | relative_url }}"{% if page.url contains '/writing' %} class="active"{% endif %}>writing</a>
+        <a href="{{ '/tools/' | relative_url }}"{% if page.url contains '/tools' %} class="active"{% endif %}>tools</a>
+        <a href="https://github.com/usefulish" target="_blank">github</a>
+      </nav>
+    </div>
+  </header>
+
+  {{ content }}
+
+  <div class="wrap">
+    <footer>
+      <span>usefuli.sh &nbsp;·&nbsp; mit licensed</span>
+      <a class="gh-link" href="https://github.com/usefulish" target="_blank">source on github →</a>
+    </footer>
+  </div>
+
+</body>
+</html>
