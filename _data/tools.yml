@@ -1,6 +1,6 @@
 - name: screenshot-renamer
   url: https://github.com/usefulish/screenshot-renamer
   desc: Renames screenshots to descriptive slugs using OCR + AI vision. Works with Hazelnut and Hazel.
-  tags: [bash, macos, cli]
+  tags: [bash, macos, cli, AI]
   post: /writing/screenshot-problem/
 

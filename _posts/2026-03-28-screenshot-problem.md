@@ -13,7 +13,7 @@ post_links:
     url: https://github.com/usefulish
 ---
 
-Every screenshot I take on a Mac gets named something like `Screenshot 2026-03-24 at 11.00.40.png`. That filename tells you exactly one useful thing — when it was taken. It tells you nothing about what's in it.
+<!--more-->
 
 My Screenshots folder had thousands of them. Finding a specific screenshot meant either remembering roughly when you took it, or opening them one by one. Neither is a great answer.
 

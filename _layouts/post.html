@@ -10,13 +10,11 @@ layout: default
           {{ page.date | date: "%Y-%m-%d" }} &nbsp;·&nbsp; {{ page.read_time | default: 5 }} min read
         </div>
         <h1 class="article-title">{{ page.title }}</h1>
-        {% if page.description or page.excerpt %}
-        <p class="article-summary">{{ page.description | default: page.excerpt | strip_html }}</p>
-        {% endif %}
         <div class="article-byline">{{ page.tags | join: " &nbsp;·&nbsp; " }}</div>
+        {% if page.description %}<p class="article-description">{{ page.description }}</p>{% endif %}
       </div>
       <div class="article-body">
-        {{ content }}
+        {{ content | split: '<!--more-->' | last }}
       </div>
     </div>
 
