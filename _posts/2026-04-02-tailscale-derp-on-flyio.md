@@ -1,6 +1,6 @@
 ---
 title: "Running a Custom Tailscale DERP Server on Fly.io"
-date: 2026-04-01
+date: 2026-04-02
 tags: [tailscale, fly.io, networking, self-hosted]
 ---
 
