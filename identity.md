@@ -377,19 +377,6 @@ sitemap: false
           </figure>
         </div>
       </section>
-      
-      
-
-      <!-- ── End note ────────────────────────────────────────────── -->
-      <section class="id-section id-section--end">
-        <div class="section-label">fin — what's missing</div>
-        <p class="id-prose id-prose--quiet">
-          This is v0.1. Things that aren't here yet, on purpose: a proper logo
-          lockup with clearspace diagrams, a sound / motion language, don'ts,
-          product sub-marks, imagery guidelines, a PDF export. They'll land
-          when there's enough of the brand to justify documenting them.
-        </p>
-      </section>
       <section class="id-section" id="app-palette">
         <div class="section-label">07 — application palette · secondary</div>
       
@@ -603,6 +590,20 @@ sitemap: false
           </div>
         </div>
       </section>
+      
+      
+
+      <!-- ── End note ────────────────────────────────────────────── -->
+      <section class="id-section id-section--end">
+        <div class="section-label">fin — what's missing</div>
+        <p class="id-prose id-prose--quiet">
+          This is v0.1. Things that aren't here yet, on purpose: a proper logo
+          lockup with clearspace diagrams, a sound / motion language, don'ts,
+          product sub-marks, imagery guidelines, a PDF export. They'll land
+          when there's enough of the brand to justify documenting them.
+        </p>
+      </section>
+      
 
     </div>
 
