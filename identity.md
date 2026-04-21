@@ -377,29 +377,7 @@ sitemap: false
           </figure>
         </div>
       </section>
-      07 â€” application palette Â· secondary
-      A secondary palette for use inside products â€” dashboards, logs, charts, chips, status indicators. These are not brand colors. They don't appear on the marketing surface, the logo, or the dictionary mark. They exist to give data a voice without shouting over the paper.
       
-      Rules of thumb: pastel, not saturated. warm-biased. used in small quantities â€” a bar, a dot, a chip. never a full background. When in doubt, reach for --ink-mid or --accent first.
-      
-      light Â· paper foreground + chip bg per role
-      sage olive --prov-fal #8fa86a dusty rose --prov-kie #c888a0 soft blue --prov-glk #7a9ec0 bronze-tan --prov-anth #c89a6a muted teal --prov-oai #7ab5a0 soft terracotta --prov-rep #d49a6a sage Â· bg --prov-fal-bg #dfe4d0 rose Â· bg --prov-kie-bg #ead3da blue Â· bg --prov-glk-bg #d4dde6 bronze Â· bg --prov-anth-bg #ead8c0 teal Â· bg --prov-oai-bg #d2e0d8 terra Â· bg --prov-rep-bg #ead8c4
-      dark Â· ink prefers-color-scheme: dark
-      sage olive --prov-fal #a8c088 dusty rose --prov-kie #dca8bc soft blue --prov-glk #9ab8d4 bronze-tan --prov-anth #d4a878 muted teal --prov-oai #9cc8b8 soft terracotta --prov-rep #e4b488 sage Â· bg --prov-fal-bg #2a3020 rose Â· bg --prov-kie-bg #382830 blue Â· bg --prov-glk-bg #242e38 bronze Â· bg --prov-anth-bg #3a2e20 teal Â· bg --prov-oai-bg #253028 terra Â· bg --prov-rep-bg #3a2c20
-      click any swatch to copy the hex.
-      
-      fg tokens
-      bar fills, dots, icons, 1px borders, small text tags. never type larger than ~14px â€” they don't have the weight for display.
-      bg tokens
-      chip backgrounds, selected-row highlights, hover tints. never a full-page background.
-      active state
-      pair fg + bg only for "active / selected" â€” the chip gets a -bg fill with a fg border and text.
-      limit
-      never use more than one of these as a dominant color in a single view. they're accents, not themes.
-      relation to --accent
-      --prov-anth (bronze-tan) is the closest sibling to --accent. that's on purpose â€” anthropic is the "home" provider and should feel related, not identical.
-      what's missing
-      no status colors (error, warning, ok). when a product needs them they get their own pass â€” don't borrow from this palette, the hues are too soft to carry alarm.
       
 
       <!-- ── End note ────────────────────────────────────────────── -->
@@ -412,7 +390,219 @@ sitemap: false
           when there's enough of the brand to justify documenting them.
         </p>
       </section>
+      <section class="id-section" id="app-palette">
+        <div class="section-label">07 — application palette · secondary</div>
       
+        <p class="id-prose">
+          A <strong>secondary</strong> palette for use inside products —
+          dashboards, logs, charts, chips, status indicators. These are
+          <strong>not brand colors.</strong> They don't appear on the marketing
+          surface, the logo, or the dictionary mark. They exist to give data a
+          voice without shouting over the paper.
+        </p>
+        <p class="id-prose id-prose--quiet">
+          Rules of thumb: <em>pastel, not saturated. warm-biased.
+          used in small quantities — a bar, a dot, a chip. never a full
+          background.</em> When in doubt, reach for <code>--ink-mid</code> or
+          <code>--accent</code> first.
+        </p>
+      
+        <div class="palette">
+          <!-- light -->
+          <div class="palette__scheme">
+            <div class="palette__head">
+              <span class="palette__schemename">light · paper</span>
+              <span class="palette__schemehint">foreground + chip bg per role</span>
+            </div>
+            <div class="palette__grid">
+              <button class="swatch" data-copy="#8fa86a" style="--s:#8fa86a;--fg:#1e1c18;">
+                <span class="swatch__role">sage olive</span>
+                <span class="swatch__token">--prov-fal</span>
+                <span class="swatch__hex">#8fa86a</span>
+              </button>
+              <button class="swatch" data-copy="#c888a0" style="--s:#c888a0;--fg:#1e1c18;">
+                <span class="swatch__role">dusty rose</span>
+                <span class="swatch__token">--prov-kie</span>
+                <span class="swatch__hex">#c888a0</span>
+              </button>
+              <button class="swatch" data-copy="#7a9ec0" style="--s:#7a9ec0;--fg:#1e1c18;">
+                <span class="swatch__role">soft blue</span>
+                <span class="swatch__token">--prov-glk</span>
+                <span class="swatch__hex">#7a9ec0</span>
+              </button>
+              <button class="swatch" data-copy="#c89a6a" style="--s:#c89a6a;--fg:#1e1c18;">
+                <span class="swatch__role">bronze-tan</span>
+                <span class="swatch__token">--prov-anth</span>
+                <span class="swatch__hex">#c89a6a</span>
+              </button>
+              <button class="swatch" data-copy="#7ab5a0" style="--s:#7ab5a0;--fg:#1e1c18;">
+                <span class="swatch__role">muted teal</span>
+                <span class="swatch__token">--prov-oai</span>
+                <span class="swatch__hex">#7ab5a0</span>
+              </button>
+              <button class="swatch" data-copy="#d49a6a" style="--s:#d49a6a;--fg:#1e1c18;">
+                <span class="swatch__role">soft terracotta</span>
+                <span class="swatch__token">--prov-rep</span>
+                <span class="swatch__hex">#d49a6a</span>
+              </button>
+      
+              <button class="swatch" data-copy="#dfe4d0" style="--s:#dfe4d0;--fg:#1e1c18;">
+                <span class="swatch__role">sage · bg</span>
+                <span class="swatch__token">--prov-fal-bg</span>
+                <span class="swatch__hex">#dfe4d0</span>
+              </button>
+              <button class="swatch" data-copy="#ead3da" style="--s:#ead3da;--fg:#1e1c18;">
+                <span class="swatch__role">rose · bg</span>
+                <span class="swatch__token">--prov-kie-bg</span>
+                <span class="swatch__hex">#ead3da</span>
+              </button>
+              <button class="swatch" data-copy="#d4dde6" style="--s:#d4dde6;--fg:#1e1c18;">
+                <span class="swatch__role">blue · bg</span>
+                <span class="swatch__token">--prov-glk-bg</span>
+                <span class="swatch__hex">#d4dde6</span>
+              </button>
+              <button class="swatch" data-copy="#ead8c0" style="--s:#ead8c0;--fg:#1e1c18;">
+                <span class="swatch__role">bronze · bg</span>
+                <span class="swatch__token">--prov-anth-bg</span>
+                <span class="swatch__hex">#ead8c0</span>
+              </button>
+              <button class="swatch" data-copy="#d2e0d8" style="--s:#d2e0d8;--fg:#1e1c18;">
+                <span class="swatch__role">teal · bg</span>
+                <span class="swatch__token">--prov-oai-bg</span>
+                <span class="swatch__hex">#d2e0d8</span>
+              </button>
+              <button class="swatch" data-copy="#ead8c4" style="--s:#ead8c4;--fg:#1e1c18;">
+                <span class="swatch__role">terra · bg</span>
+                <span class="swatch__token">--prov-rep-bg</span>
+                <span class="swatch__hex">#ead8c4</span>
+              </button>
+            </div>
+          </div>
+      
+          <!-- dark -->
+          <div class="palette__scheme palette__scheme--dark">
+            <div class="palette__head">
+              <span class="palette__schemename">dark · ink</span>
+              <span class="palette__schemehint">prefers-color-scheme: dark</span>
+            </div>
+            <div class="palette__grid">
+              <button class="swatch" data-copy="#a8c088" style="--s:#a8c088;--fg:#1a1815;">
+                <span class="swatch__role">sage olive</span>
+                <span class="swatch__token">--prov-fal</span>
+                <span class="swatch__hex">#a8c088</span>
+              </button>
+              <button class="swatch" data-copy="#dca8bc" style="--s:#dca8bc;--fg:#1a1815;">
+                <span class="swatch__role">dusty rose</span>
+                <span class="swatch__token">--prov-kie</span>
+                <span class="swatch__hex">#dca8bc</span>
+              </button>
+              <button class="swatch" data-copy="#9ab8d4" style="--s:#9ab8d4;--fg:#1a1815;">
+                <span class="swatch__role">soft blue</span>
+                <span class="swatch__token">--prov-glk</span>
+                <span class="swatch__hex">#9ab8d4</span>
+              </button>
+              <button class="swatch" data-copy="#d4a878" style="--s:#d4a878;--fg:#1a1815;">
+                <span class="swatch__role">bronze-tan</span>
+                <span class="swatch__token">--prov-anth</span>
+                <span class="swatch__hex">#d4a878</span>
+              </button>
+              <button class="swatch" data-copy="#9cc8b8" style="--s:#9cc8b8;--fg:#1a1815;">
+                <span class="swatch__role">muted teal</span>
+                <span class="swatch__token">--prov-oai</span>
+                <span class="swatch__hex">#9cc8b8</span>
+              </button>
+              <button class="swatch" data-copy="#e4b488" style="--s:#e4b488;--fg:#1a1815;">
+                <span class="swatch__role">soft terracotta</span>
+                <span class="swatch__token">--prov-rep</span>
+                <span class="swatch__hex">#e4b488</span>
+              </button>
+      
+              <button class="swatch" data-copy="#2a3020" style="--s:#2a3020;--fg:#e8e2d8;">
+                <span class="swatch__role">sage · bg</span>
+                <span class="swatch__token">--prov-fal-bg</span>
+                <span class="swatch__hex">#2a3020</span>
+              </button>
+              <button class="swatch" data-copy="#382830" style="--s:#382830;--fg:#e8e2d8;">
+                <span class="swatch__role">rose · bg</span>
+                <span class="swatch__token">--prov-kie-bg</span>
+                <span class="swatch__hex">#382830</span>
+              </button>
+              <button class="swatch" data-copy="#242e38" style="--s:#242e38;--fg:#e8e2d8;">
+                <span class="swatch__role">blue · bg</span>
+                <span class="swatch__token">--prov-glk-bg</span>
+                <span class="swatch__hex">#242e38</span>
+              </button>
+              <button class="swatch" data-copy="#3a2e20" style="--s:#3a2e20;--fg:#e8e2d8;">
+                <span class="swatch__role">bronze · bg</span>
+                <span class="swatch__token">--prov-anth-bg</span>
+                <span class="swatch__hex">#3a2e20</span>
+              </button>
+              <button class="swatch" data-copy="#253028" style="--s:#253028;--fg:#e8e2d8;">
+                <span class="swatch__role">teal · bg</span>
+                <span class="swatch__token">--prov-oai-bg</span>
+                <span class="swatch__hex">#253028</span>
+              </button>
+              <button class="swatch" data-copy="#3a2c20" style="--s:#3a2c20;--fg:#e8e2d8;">
+                <span class="swatch__role">terra · bg</span>
+                <span class="swatch__token">--prov-rep-bg</span>
+                <span class="swatch__hex">#3a2c20</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      
+        <p class="id-prose id-prose--quiet" style="margin-top:28px;">
+          <em>click any swatch to copy the hex.</em>
+        </p>
+      
+        <!-- usage -->
+        <div class="id-grid-2">
+          <div class="id-note">
+            <div class="id-note__k">fg tokens</div>
+            <div class="id-note__v">
+              bar fills, dots, icons, 1px borders, small text tags. never type
+              larger than ~14px — they don't have the weight for display.
+            </div>
+          </div>
+          <div class="id-note">
+            <div class="id-note__k">bg tokens</div>
+            <div class="id-note__v">
+              chip backgrounds, selected-row highlights, hover tints. never a
+              full-page background.
+            </div>
+          </div>
+          <div class="id-note">
+            <div class="id-note__k">active state</div>
+            <div class="id-note__v">
+              pair <code>fg</code> + <code>bg</code> only for "active / selected" — the chip
+              gets a <code>-bg</code> fill with a <code>fg</code> border and text.
+            </div>
+          </div>
+          <div class="id-note">
+            <div class="id-note__k">limit</div>
+            <div class="id-note__v">
+              never use more than one of these as a dominant color in a single
+              view. they're accents, not themes.
+            </div>
+          </div>
+          <div class="id-note">
+            <div class="id-note__k">relation to --accent</div>
+            <div class="id-note__v">
+              <code>--prov-anth</code> (bronze-tan) is the closest sibling to
+              <code>--accent</code>. that's on purpose — anthropic is the "home"
+              provider and should feel related, not identical.
+            </div>
+          </div>
+          <div class="id-note">
+            <div class="id-note__k">what's missing</div>
+            <div class="id-note__v">
+              no status colors (error, warning, ok). when a product needs them
+              they get their own pass — don't borrow from this palette, the hues
+              are too soft to carry alarm.
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div>
 
