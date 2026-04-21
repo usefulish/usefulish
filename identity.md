@@ -377,6 +377,29 @@ sitemap: false
           </figure>
         </div>
       </section>
+      07 â€” application palette Â· secondary
+      A secondary palette for use inside products â€” dashboards, logs, charts, chips, status indicators. These are not brand colors. They don't appear on the marketing surface, the logo, or the dictionary mark. They exist to give data a voice without shouting over the paper.
+      
+      Rules of thumb: pastel, not saturated. warm-biased. used in small quantities â€” a bar, a dot, a chip. never a full background. When in doubt, reach for --ink-mid or --accent first.
+      
+      light Â· paper foreground + chip bg per role
+      sage olive --prov-fal #8fa86a dusty rose --prov-kie #c888a0 soft blue --prov-glk #7a9ec0 bronze-tan --prov-anth #c89a6a muted teal --prov-oai #7ab5a0 soft terracotta --prov-rep #d49a6a sage Â· bg --prov-fal-bg #dfe4d0 rose Â· bg --prov-kie-bg #ead3da blue Â· bg --prov-glk-bg #d4dde6 bronze Â· bg --prov-anth-bg #ead8c0 teal Â· bg --prov-oai-bg #d2e0d8 terra Â· bg --prov-rep-bg #ead8c4
+      dark Â· ink prefers-color-scheme: dark
+      sage olive --prov-fal #a8c088 dusty rose --prov-kie #dca8bc soft blue --prov-glk #9ab8d4 bronze-tan --prov-anth #d4a878 muted teal --prov-oai #9cc8b8 soft terracotta --prov-rep #e4b488 sage Â· bg --prov-fal-bg #2a3020 rose Â· bg --prov-kie-bg #382830 blue Â· bg --prov-glk-bg #242e38 bronze Â· bg --prov-anth-bg #3a2e20 teal Â· bg --prov-oai-bg #253028 terra Â· bg --prov-rep-bg #3a2c20
+      click any swatch to copy the hex.
+      
+      fg tokens
+      bar fills, dots, icons, 1px borders, small text tags. never type larger than ~14px â€” they don't have the weight for display.
+      bg tokens
+      chip backgrounds, selected-row highlights, hover tints. never a full-page background.
+      active state
+      pair fg + bg only for "active / selected" â€” the chip gets a -bg fill with a fg border and text.
+      limit
+      never use more than one of these as a dominant color in a single view. they're accents, not themes.
+      relation to --accent
+      --prov-anth (bronze-tan) is the closest sibling to --accent. that's on purpose â€” anthropic is the "home" provider and should feel related, not identical.
+      what's missing
+      no status colors (error, warning, ok). when a product needs them they get their own pass â€” don't borrow from this palette, the hues are too soft to carry alarm.
 
       <!-- ── End note ────────────────────────────────────────────── -->
       <section class="id-section id-section--end">
@@ -401,6 +424,7 @@ sitemap: false
         <a class="toc-item" href="#color">04 — color</a>
         <a class="toc-item" href="#terminal">05 — terminal</a>
         <a class="toc-item" href="#avatar">06 — avatar</a>
+        <a class="toc-item" href="#app-palette">07 — application palette</a>
       </div>
 
       <div class="sidebar-section">
