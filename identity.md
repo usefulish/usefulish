@@ -377,18 +377,6 @@ sitemap: false
           </figure>
         </div>
       </section>
-      
-
-      <!-- ── End note ────────────────────────────────────────────── -->
-      <section class="id-section id-section--end">
-        <div class="section-label">fin — what's missing</div>
-        <p class="id-prose id-prose--quiet">
-          This is v0.1. Things that aren't here yet, on purpose: a proper logo
-          lockup with clearspace diagrams, a sound / motion language, don'ts,
-          product sub-marks, imagery guidelines, a PDF export. They'll land
-          when there's enough of the brand to justify documenting them.
-        </p>
-      </section>
       07 â€” application palette Â· secondary
       A secondary palette for use inside products â€” dashboards, logs, charts, chips, status indicators. These are not brand colors. They don't appear on the marketing surface, the logo, or the dictionary mark. They exist to give data a voice without shouting over the paper.
       
@@ -412,6 +400,19 @@ sitemap: false
       --prov-anth (bronze-tan) is the closest sibling to --accent. that's on purpose â€” anthropic is the "home" provider and should feel related, not identical.
       what's missing
       no status colors (error, warning, ok). when a product needs them they get their own pass â€” don't borrow from this palette, the hues are too soft to carry alarm.
+      
+
+      <!-- ── End note ────────────────────────────────────────────── -->
+      <section class="id-section id-section--end">
+        <div class="section-label">fin — what's missing</div>
+        <p class="id-prose id-prose--quiet">
+          This is v0.1. Things that aren't here yet, on purpose: a proper logo
+          lockup with clearspace diagrams, a sound / motion language, don'ts,
+          product sub-marks, imagery guidelines, a PDF export. They'll land
+          when there's enough of the brand to justify documenting them.
+        </p>
+      </section>
+      
 
     </div>
 
