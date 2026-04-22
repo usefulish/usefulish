@@ -1,0 +1,158 @@
+{
+  "platform": "LinkedIn",
+  "last_updated": "2026-04-22",
+  "source_urls": [
+    "https://www.linkedin.com/help/linkedin/answer/a426534",
+    "https://www.linkedin.com/help/linkedin/answer/a424737",
+    "https://www.linkedin.com/help/linkedin/answer/a427022",
+    "https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/post-api-schema?view=li-lms-2026-02"
+  ],
+  "formats": [
+    {
+      "slug": "sponsored-image",
+      "name": "Sponsored Image",
+      "image_sizes": [
+        {
+          "ratio": "1.91:1",
+          "recommended_px": "1200x628",
+          "min_px": "640x360",
+          "max_px": "7680x4320"
+        },
+        {
+          "ratio": "1:1",
+          "recommended_px": "1200x1200",
+          "min_px": "360x360",
+          "max_px": "4320x4320"
+        },
+        {
+          "ratio": "4:5",
+          "recommended_px": "720x900",
+          "min_px": "360x640",
+          "max_px": "2430x4320"
+        }
+      ],
+      "ratios": [
+        "1.91:1",
+        "1:1",
+        "4:5"
+      ],
+      "headline_max": 70,
+      "headline_max_absolute": 200,
+      "intro_text_recommended": 150,
+      "intro_text_max": 3000,
+      "max_file_size_mb": 5
+    },
+    {
+      "slug": "sponsored-video",
+      "name": "Sponsored Video",
+      "format": "MP4",
+      "ratios": [
+        {
+          "label": "Horizontal/landscape",
+          "ratio": "16:9",
+          "min_px": "640x360",
+          "max_px": "1920x1080",
+          "recommended_px_options": [
+            "1920x1080",
+            "1200x675"
+          ]
+        },
+        {
+          "label": "Square",
+          "ratio": "1:1",
+          "min_px": "360x360",
+          "max_px": "1920x1920"
+        },
+        {
+          "label": "Vertical",
+          "ratio": "4:5",
+          "min_px": "360x450",
+          "max_px": "1080x1350",
+          "recommended_px": "720x900"
+        },
+        {
+          "label": "Vertical",
+          "ratio": "9:16",
+          "min_px": "360x640",
+          "max_px": "1080x1920",
+          "recommended_px": "720x1280"
+        }
+      ],
+      "duration_min_seconds": 3,
+      "duration_max_seconds": 1800,
+      "duration_recommended_seconds": "15-30",
+      "file_size_min_kb": 75,
+      "file_size_max_mb": 500,
+      "headline_max": 70,
+      "headline_max_absolute": 200,
+      "intro_text_max": 3000
+    },
+    {
+      "slug": "sponsored-carousel",
+      "name": "Sponsored Carousel",
+      "recommended_card_px": "1080x1080",
+      "ratio": "1:1",
+      "min_cards": 2,
+      "max_cards": 10,
+      "max_file_size_mb": 10,
+      "headline_max": 45,
+      "headline_truncation_note": "two lines",
+      "intro_text_recommended": 150,
+      "intro_text_max": 255
+    }
+  ],
+  "cta_options": [
+    {
+      "value": "APPLY",
+      "label": "Apply"
+    },
+    {
+      "value": "DOWNLOAD",
+      "label": "Download"
+    },
+    {
+      "value": "VIEW_QUOTE",
+      "label": "View Quote"
+    },
+    {
+      "value": "LEARN_MORE",
+      "label": "Learn More"
+    },
+    {
+      "value": "SIGN_UP",
+      "label": "Sign Up"
+    },
+    {
+      "value": "SUBSCRIBE",
+      "label": "Subscribe"
+    },
+    {
+      "value": "REGISTER",
+      "label": "Register"
+    },
+    {
+      "value": "JOIN",
+      "label": "Join"
+    },
+    {
+      "value": "ATTEND",
+      "label": "Attend"
+    },
+    {
+      "value": "REQUEST_DEMO",
+      "label": "Register Demo"
+    },
+    {
+      "value": "SEE_MORE",
+      "label": "See More"
+    },
+    {
+      "value": "BUY_NOW",
+      "label": "Buy Now"
+    },
+    {
+      "value": "SHOP_NOW",
+      "label": "Shop Now"
+    }
+  ]
+}
