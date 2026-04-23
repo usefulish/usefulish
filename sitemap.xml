@@ -7,7 +7,13 @@ permalink: /sitemap.xml
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   {% for page in site.pages %}
-    {% if page.sitemap != false and page.url != "/404.html" %}
+    {% if page.sitemap != false
+      and page.url != "/404.html"
+      and page.url != "/sitemap.xml"
+      and page.url contains ".html" == false
+      and page.url contains "/assets/" == false
+      and page.url contains "/scripts/" == false
+    %}
       <url>
         <loc>{{ site.url }}{{ page.url }}</loc>
         <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
