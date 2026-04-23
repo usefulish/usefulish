@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /scripts/
+
+Sitemap: https://usefuli.sh/sitemap.xml
