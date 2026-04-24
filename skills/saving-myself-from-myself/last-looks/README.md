@@ -14,7 +14,7 @@ Hardcoded absolute paths
 Personal infrastructure details (server names, internal IPs, tunnel URLs)
 Sensitive files lurking in git history even if they've since been deleted
 
-Trigger it by saying things like "last looks", "ready to push", or "check before I push" in Claude Desktop or Claude Code.
+Trigger it by saying things like "last looks", "ready to push", or "check before I push".
 
 ## Philosophy
 This skill exists because I did the thing it prevents, or came close enough to add it proactively.

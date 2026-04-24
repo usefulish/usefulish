@@ -52,7 +52,7 @@ The user's response falls into one of three shapes. Read carefully which one, be
 
 ## Session resets
 
-This skill has no access to wall-clock time. A conversation that spans multiple days of real time appears as one continuous session to Claude. The user controls the reset.
+This skill has no access to wall-clock time. A conversation that spans multiple days of real time appears as one continuous session. The user controls the reset.
 
 **Reset signals** (any of these restores the one-ask budget):
 

@@ -1,6 +1,6 @@
 # go-for-a-walk
 
-Most Claude skills optimize for output — commit messages, PR summaries, code reviews, faster everything. This one optimizes for the conditions output comes from.
+Most skills optimize for output — commit messages, PR summaries, code reviews, faster everything. This one optimizes for the conditions output comes from.
 
 It watches for signs you've been deep on one thing for a while, and at the next natural pause, suggests stepping away. Once per session. Drop it if you say no. Re-ask if you say "later." Reset when you say you're back.
 
