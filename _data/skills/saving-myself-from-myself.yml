@@ -1,0 +1,39 @@
+# skills in the saving-myself-from-myself collection.
+# description + tagline are hand-written for the site; the full SKILL.md
+# lives in skills/<slug>/SKILL.md in the repo.
+
+- slug: last-looks
+  name: last-looks
+  tagline: pre-push scan for repos going public
+  description: >
+    Catches secrets, hardcoded paths, and personal infrastructure details
+    before they hit GitHub. Trigger with "last looks", "ready to push",
+    or "check before I push".
+  status: ready
+  triggers:
+    - last looks
+    - ready to push
+    - check before I push
+  scans:
+    - API keys & tokens
+    - hardcoded /Users/, /home/ paths
+    - internal hostnames & IPs
+    - sensitive files in git history
+
+- slug: go-for-a-walk
+  name: go-for-a-walk
+  tagline: gentle nudge to step away at a natural breakpoint
+  description: >
+    Most skills optimize for output. This one optimizes for the conditions
+    output comes from. Once per session, at a natural pause, it suggests
+    stepping away. Drop it if you say no. Reset when you're back.
+  status: ready
+  triggers:
+    - should I take a break
+    - am I overdoing this
+    - (watches the session itself)
+  scans:
+    - many substantive turns on one thread
+    - tight iteration past diminishing returns
+    - tunnel vision signals
+    - accumulated depth without a pause

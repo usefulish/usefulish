@@ -1,0 +1,86 @@
+---
+layout: default
+---
+<div class="wrap">
+  <div class="layout" id="skill">
+
+    <div class="span-2" style="padding-top:32px;">
+      <div class="skill-hero">
+        <div class="skill-crumbs">
+          <a href="{{ '/saving-myself-from-myself/' | relative_url }}">saving-myself-from-myself</a>
+          <span>/</span>
+          <span class="skill-crumbs__current">{{ page.slug }}</span>
+        </div>
+        <h1 class="skill-title">{{ page.slug }}</h1>
+        {% if page.tagline %}<p class="skill-tagline">{{ page.tagline }}</p>{% endif %}
+        {% if page.triggers %}
+        <div class="skill-triggers">
+          <span class="skill-triggers__k">triggers</span>
+          <div class="skill-triggers__chips">
+            {% for t in page.triggers %}<span class="trigger-chip">{{ t }}</span>{% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <article class="article-body skill-body">
+        {{ content }}
+      </article>
+
+      <div class="skill-footer">
+        <a class="read-more" href="{{ page.source_url }}" target="_blank">view SKILL.md on github →</a>
+      </div>
+    </div>
+
+    <div class="col-3" style="padding-top:32px;">
+      <div class="sidebar-section">
+        <div class="section-label">other skills</div>
+        {% assign skills = site.data.skills.saving-myself-from-myself %}
+        {% for s in skills %}
+        {% if s.slug != page.slug %}
+        <a class="sidebar-link" href="{{ '/saving-myself-from-myself/' | append: s.slug | append: '/' | relative_url }}">{{ s.name }}</a>
+        {% endif %}
+        {% endfor %}
+        <a class="sidebar-link" href="{{ '/saving-myself-from-myself/' | relative_url }}">← back to collection</a>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">install</div>
+        <p class="skill-install">Drop the skill folder into <code>.claude/skills/</code> (Claude Code) or double-click the <code>.skill</code> bundle (Claude Desktop).</p>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">elsewhere</div>
+        {% for link in site.data.links %}
+        <a class="sidebar-link" href="{{ link.url }}" target="_blank">{{ link.label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+#skill .skill-hero { margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
+#skill .skill-crumbs { font-size: 11px; color: var(--ink-faint); letter-spacing: 0.04em; margin-bottom: 18px; display: flex; gap: 8px; align-items: baseline; }
+#skill .skill-crumbs a { color: var(--ink-mid); text-decoration: none; }
+#skill .skill-crumbs a:hover { color: var(--accent); }
+#skill .skill-crumbs__current { color: var(--ink); }
+#skill .skill-title { font-size: 36px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 14px; }
+#skill .skill-tagline { font-size: 14px; color: var(--ink-mid); font-style: italic; line-height: 1.5; max-width: 58ch; margin-bottom: 18px; }
+#skill .skill-triggers { margin-top: 12px; }
+#skill .skill-triggers__k { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 8px; }
+#skill .skill-triggers__chips { display: flex; flex-wrap: wrap; gap: 5px; }
+#skill .trigger-chip { font-size: 11px; background: var(--tag-bg); color: var(--ink-mid); padding: 3px 8px; letter-spacing: 0.02em; }
+#skill .skill-body h2 { font-size: 13px; font-weight: 600; color: var(--ink); letter-spacing: 0.04em; text-transform: uppercase; margin: 2.4em 0 0.8em; padding-top: 1.4em; border-top: 1px solid var(--rule); }
+#skill .skill-body h3 { font-size: 12px; font-weight: 600; color: var(--ink); letter-spacing: 0.02em; margin: 1.8em 0 0.6em; }
+#skill .skill-body ul, #skill .skill-body ol { padding-left: 20px; margin-bottom: 1.4em; }
+#skill .skill-body li { margin-bottom: 0.4em; color: var(--ink-mid); line-height: 1.8; font-size: 13px; }
+#skill .skill-body li code { font-family: var(--mono); font-size: 12px; background: var(--surface); padding: 1px 5px; color: var(--accent); }
+#skill .skill-body p strong, #skill .skill-body li strong { color: var(--ink); font-weight: 600; }
+#skill .skill-body em { color: var(--ink-mid); font-style: italic; }
+#skill .skill-body hr { border: none; border-top: 1px solid var(--rule); margin: 2em 0; }
+#skill .skill-footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--rule); }
+#skill .skill-install { font-size: 11px; color: var(--ink-mid); line-height: 1.7; margin: 0; }
+#skill .skill-install code { font-family: var(--mono); font-size: 11px; background: var(--surface); color: var(--accent); padding: 1px 5px; }
+</style>
