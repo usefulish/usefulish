@@ -1,4 +1,4 @@
-# saving-myself-from-myself
+# last-looks
 Claude skills for catching my own mistakes before they become permanent.
 
 ### The problem
