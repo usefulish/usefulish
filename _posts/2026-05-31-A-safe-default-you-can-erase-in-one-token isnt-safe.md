@@ -1,7 +1,9 @@
 ---
+layout: post
 title: "A safe default you can erase in one token isn't safe"
 date: 2026-05-31
 tags: [supply-chain, security, AI agents, npm, macOS]
+description: "One token is all it takes to strip an AI agent's safety—and that's a setting your malware can flip as easily as you can.One token is all it takes to strip an AI agent's safety—and that's a setting your malware can flip as easily as you can."
 post_tools:
   - name: mac-dependency-safety
     url: https://github.com/usefulish/mac-dependency-safety
@@ -9,8 +11,6 @@ post_links:
   - label: github.com/usefulish
     url: https://github.com/usefulish
 ---
-
-# A safe default you can erase in one token isn't safe
 
 Last August, when the `nx` packages went bad, I wasn't even running Claude Code. The attack that turned people's local AI agents against them simply wasn't about me. I wasn't in the blast radius, because the blast radius was small.
 
