@@ -3,7 +3,7 @@ layout: post
 title: "A safe default you can erase in one token isn't safe"
 date: 2026-05-31
 tags: [supply-chain, security, AI agents, npm, macOS]
-description: "One token is all it takes to strip an AI agent's safety—and that's a setting your malware can flip as easily as you can.One token is all it takes to strip an AI agent's safety—and that's a setting your malware can flip as easily as you can."
+description: "One token is all it takes to strip an AI agent's safety—and that's a setting your malware can flip as easily as you can."
 post_tools:
   - name: mac-dependency-safety
     url: https://github.com/usefulish/mac-dependency-safety
@@ -50,7 +50,7 @@ The problem is that the gap between "on" and "off" is one token wide, and a cont
 
 Here's what makes this an indictment rather than a gripe: the harder version already exists. It's just been built for somebody else.
 
-All three tools have an enterprise story, and in all three it's the same idea — a managed policy file, owned by an administrator, that the user cannot override. An org admin can set Codex's allowed sandbox modes so `danger-full-access` is simply off the table, or disallow Gemini's yolo at the policy level, or drop Claude Code's managed-settings file into a root-owned directory no user config can touch. In that world, a `postinstall` that types `--yolo` accomplishes nothing. The flag doesn't work. The safety is real *because the override is hard.*
+Both Codex and Claude have an enterprise story, and in both it's the same idea — a managed policy file, owned by an administrator, that the user cannot override. An org admin can set Codex's allowed sandbox modes so `danger-full-access` is simply off the table, or drop Claude Code's managed-settings file into a root-owned directory no user config can touch. In that world, a `postinstall` that types `--yolo` accomplishes nothing. The flag doesn't work. The safety is real *because the override is hard.*
 
 That's the tell. The same vendor, with the same mechanism, ships real protection to the org and theater to the individual — and the only variable that decides which one you get is how hard it is to turn off. Hard, if you have a CISO. One token, if you're a person.
 
@@ -72,7 +72,7 @@ I'm not claiming to have designed their product. The point is that every one of 
 
 Everything below is me hand-rolling the harder-to-turn-on that the tools should ship. Read it that way. It's not clever; it's compensatory.
 
-**Layer 0 — make the agents' safety un-erasable.** The tools that read a root-owned managed-settings file (Claude Code, Gemini, Codex) will honor settings that no user config — and no `postinstall` running as you — can override. Install your safety defaults there: block the bypass modes, deny the agents' file-read tools access to `.env`, `~/.ssh`, and cloud credentials. This is you playing your own IT admin, because nobody assigned you one. For the tools that keep settings in user-writable JSON (Cursor, Copilot), set your defaults and then make the file immutable with `chflags uchg` — which is, literally, persisted protected consent built out of a filesystem attribute. The postinstall can't flip what it can't write.
+**Layer 0 — make the agents' safety un-erasable.** The tools that read a root-owned managed-settings file (Claude Code, Codex) will honor settings that no user config — and no `postinstall` running as you — can override. Install your safety defaults there: block the bypass modes, deny the agents' file-read tools access to `.env`, `~/.ssh`, and cloud credentials. This is you playing your own IT admin, because nobody assigned you one. For the tools that keep settings in user-writable JSON (Cursor), set your defaults and then make the file immutable with `chflags uchg` — which is, literally, persisted protected consent built out of a filesystem attribute. The postinstall can't flip what it can't write.
 
 **Layer 1 — npm.** `npm config set ignore-scripts true`. One line, and it stops the nx pattern outright, because the pattern *is* a lifecycle script. The cost is real but small: packages that genuinely build on install now need a manual `npm rebuild`. There's a cooldown trick too — `npm install <pkg> --before="$(date -v-7d +%Y-%m-%d)"` installs the version as of a week ago, betting that bad releases get yanked within days. (pnpm bakes this in as `minimumReleaseAge`.) And commit the lockfile, then install with `npm ci`, not `npm install` — `ci` treats `package-lock.json` as authoritative and fails on drift, where `install` rewrites it silently, so a freshly-published malicious version can't slip in on a routine install. Three cheap layers at different points in the same chain: the lockfile guards the gap *between* updates, the cooldown guards the *moment* you update, `ignore-scripts` neuters whatever still lands.
 
@@ -80,7 +80,7 @@ Everything below is me hand-rolling the harder-to-turn-on that the tools should 
 
 **Layer 3 — Homebrew.** The lever is source trust, not a flag. Stick to `core` and `cask`, treat a random `brew tap` like an unreviewed npm package, give extra scrutiny to casks that ship a `.pkg` (those run the installer as root). Snapshot your installs into a version-controlled `Brewfile` so your machine's software becomes a reviewable allowlist.
 
-**Layer 4 — agent defaults, and I mean soft.** One shared `AGENTS.md`, written once and imported into all four tools, telling the agents themselves to prefer `npm ci`, to not add MCP servers unless asked, and so on. I include it because it's useful and free, but I want to be exact about what it is: a nudge, not a control. The agents usually follow it; they can also ignore it, and malware doesn't read it at all. It's the precise inverse of Layer 0 — that layer *distrusts* the agent and hard-blocks it; this one *cooperates* and asks nicely. Which is what makes it the cleanest illustration of the thing this whole post is wary of: a safe default that holds right up until something has a reason to step over it. Keep it as a sibling to the npm hygiene above. Don't mistake it for the lock.
+**Layer 4 — agent defaults, and I mean soft.** One shared `AGENTS.md`, written once and imported into all three tools, telling the agents themselves to prefer `npm ci`, to not add MCP servers unless asked, and so on. I include it because it's useful and free, but I want to be exact about what it is: a nudge, not a control. The agents usually follow it; they can also ignore it, and malware doesn't read it at all. It's the precise inverse of Layer 0 — that layer *distrusts* the agent and hard-blocks it; this one *cooperates* and asks nicely. Which is what makes it the cleanest illustration of the thing this whole post is wary of: a safe default that holds right up until something has a reason to step over it. Keep it as a sibling to the npm hygiene above. Don't mistake it for the lock.
 
 ## What this isn't
 
